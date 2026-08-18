@@ -1,51 +1,67 @@
 # SpendFlow — Design Decisions
 
-## 1. Product Direction
-SpendFlow was designed as a calm, highly readable personal finance experience. Rather than overwhelming users with dense data tables or aggressive upsells, the product focuses on helping users quickly understand where their money goes, what is changing, and what deserves attention.
+## 1. Why this approach?
 
-## 2. Visual Direction
-The visual identity uses a restrained, editorial fintech aesthetic instead of a noisy rainbow color palette. The color system uses:
-- `#F7F8FC` background for soft, low-glare contrast
-- `#111827` primary ink for sharp typographic authority
-- `#635BFF` primary violet accent for key CTAs and active states
-- `#EEF2FF` soft accent for selected tab backdrops and icons
-- `#16A34A` reserved strictly for positive percentage indicators
+I chose to build SpendFlow as a focused personal-finance product homepage rather than a generic SaaS landing page.
 
-## 3. Typography
-SpendFlow pairs two distinct typefaces:
-- **Fraunces** for major display headings, giving the brand an editorial feel
-- **Inter** for UI controls, financial numbers, transaction items, and body text to maximize readability
+The main alternative I rejected was a conventional marketing page built around multiple feature sections, testimonials, statistics, and promotional content. That approach could make the page feel like a template and would also conflict with the challenge's requirement to avoid fabricated testimonials, user counts, and logos.
 
-## 4. UX Decisions
-- **Hero Value Proposition:** Clear headline and value statement above the fold.
-- **Single Dominant CTA:** "Explore SpendFlow" acts as the clear primary action.
-- **Early Product Visibility:** Interactive dashboard preview is presented right in the hero section.
-- **Information Flow:** Structured logically from spending totals → weekly trends → category distribution → contextual insights.
-- **Mobile-First Responsiveness:** Spacing and layout scale smoothly across all screen sizes.
+Instead, I made the product itself the primary visual element. The hero introduces the value proposition and immediately leads into an interactive dashboard preview. This lets the user understand the product through the interface rather than relying on marketing claims.
 
-## 5. Interaction Decisions
-- Responsive sticky navbar with smooth mobile drawer navigation
-- Precise anchor scrolling with header offset compensation
-- Interactive "This month / Last month" period toggle
-- Smooth SVG cubic bezier spending chart with hover/focus tooltips
-- Micro-interactions on buttons, transaction rows, and category meters
+I also chose React + TypeScript + Vite + Tailwind CSS because they allowed me to build, test, and refine the responsive experience quickly while keeping the UI modular.
 
-## 6. Responsive Decisions
-The interface was rigorously validated at both **390 × 844** (Mobile) and **1440 × 900** (Desktop). All horizontal scrolling was eliminated, and metric cards, charts, and showcase sheets stack naturally on mobile devices.
+## 2. Trade-off
 
-## 7. Data Honesty
-All financial figures, charts, and transaction logs are clearly marked as illustrative demo data. The design intentionally avoids deceptive tactics such as fake testimonials, fabricated active user counters, or fake press logos.
+Under the time limit, I prioritized the premium homepage experience and interactive product preview over building a real financial backend, authentication system, or banking integration.
 
-## 8. Technical Decisions
-Built using **React 18 + TypeScript + Vite + Tailwind CSS**. The architecture is structured into modular, reusable components (`SpendingChart`, `DashboardPreview`, `InsightCard`, `Button`, `Navbar`, `Footer`) and clean section wrappers.
+The dashboard therefore uses clearly labeled illustrative demo data instead of pretending to represent real financial accounts.
 
-## 9. Trade-offs
-Because this challenge focused on creating a premium product homepage and frontend dashboard experience, building a real banking integration, user authentication flow, or production backend API was intentionally out of scope.
+With a real week, I would connect the interface to a proper data layer, add authentication and persistent user data, improve accessibility testing with screen readers and keyboard navigation, and perform broader device/browser testing.
 
-## 10. Validation
-- Mobile responsiveness (390px) verified
-- Desktop responsiveness (1440px) verified
-- Navigation & mobile menu verified
-- Period selector state switching verified
-- Chart tooltips & hover states verified
-- Production build completed successfully with zero type or build errors
+## 3. AI tools and personal verification
+
+I used AI tools during development to accelerate UI exploration, component refinement, responsive-layout iteration, debugging, and code review.
+
+I did not treat generated output as automatically correct. I personally ran the application, checked the interactions, reviewed the component structure, tested the responsive layout at 390px and 1440px, verified the period selector and chart interactions, and ran the production build.
+
+I also reviewed and refined the generated design decisions, particularly the color palette, typography, spacing, dashboard hierarchy, responsive behavior, and the use of illustrative-data disclaimers.
+
+The final implementation was verified with a successful production build and manual UI/interaction testing.
+
+## 4. Design Direction
+
+SpendFlow uses a calm editorial-fintech visual language rather than a typical high-saturation SaaS aesthetic.
+
+- Background: `#F7F8FC`
+- Primary text: `#111827`
+- Secondary text: `#667085`
+- Primary accent: `#635BFF`
+- Deep accent: `#4338CA`
+- Soft accent: `#EEF2FF`
+- Borders: `#E5E7EB`
+- Success state: `#16A34A`
+
+Fraunces is used for major display headings while Inter is used for UI, numbers, controls, and supporting text.
+
+## 5. Key UX Decisions
+
+- Clear value proposition above the fold
+- One dominant primary CTA
+- Product preview introduced early
+- Interactive period comparison
+- Spending trend visualization with useful tooltips
+- Responsive mobile navigation
+- Restrained motion and hover interactions
+- Explicit illustrative-data disclaimer
+- No fabricated testimonials, user counts, or logos
+
+## 6. Validation
+
+The final page was checked at:
+
+- 390 × 844 mobile
+- 1440 × 900 desktop
+
+I verified navigation, mobile menu behavior, period switching, chart interactions, responsive layout, horizontal-overflow behavior, and the production build.
+
+Production build completed successfully with zero build errors.
